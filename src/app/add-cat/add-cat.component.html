@@ -1,0 +1,17 @@
+<div>
+  <button  mat-stroked-button routerLink="/category">
+    <mat-icon>backspace</mat-icon></button>
+</div>
+
+<div class="login-box">
+  <h2>Ajouter une Categorie</h2>
+  <form #f="ngForm"   (ngSubmit)="saveCAT(f.value)">
+    <div class="user-box">
+      <input type="text" name="catNom" required ngModel />
+      <label>Nom de la Categorie</label>
+    </div>
+
+    <button class="name noselect" type="submit">Ajouter</button>
+
+  </form>
+</div>

@@ -1,0 +1,17 @@
+<div>
+  <button  mat-stroked-button routerLink="/marque">
+    <mat-icon>backspace</mat-icon></button>
+</div>
+
+<div class="login-box">
+  <h2>Ajouter une Marque</h2>
+  <form #f="ngForm"   (ngSubmit)="updateMark()"    method="put" id="contact_form">
+    <div class="user-box">
+      <input type="text" name="marqNom" [(ngModel)]="mark.marqNom" ngModel/>
+      <label>Nom de la marque</label>
+    </div>
+
+    <button class="name noselect" type="submit" >Modifier</button>
+
+  </form>
+</div>

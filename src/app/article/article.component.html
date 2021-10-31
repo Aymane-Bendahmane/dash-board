@@ -1,0 +1,90 @@
+<h1 class="h1">Liste des Produits	</h1>
+<div>
+	<button  mat-stroked-button  routerLink="/add-article"> <mat-icon>add_shopping_cart</mat-icon></button>
+
+	</div>
+<mat-form-field>
+		<mat-label>Filter</mat-label>
+		<input matInput placeholder="Chercher une Designation "(keyup)="applyFilter($event)">
+	</mat-form-field>
+
+
+<div>
+	<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+		<div fxFlex="60">
+	<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+	<table mat-table [dataSource]="dataSource" matSort>
+
+
+		<ng-container matColumnDef="id">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+
+			<td mat-cell *matCellDef="let row">{{ row.id }}</td>
+		</ng-container>
+
+		<ng-container matColumnDef="artdesignation">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Designation</th>
+			<td mat-cell *matCellDef="let row">{{ row.artdesignation }}</td>
+		</ng-container>
+
+		<ng-container matColumnDef="prix">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Prix</th>
+			<td mat-cell *matCellDef="let row">{{ row.prix }}</td>
+		</ng-container>
+		<ng-container matColumnDef="qtstock">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Quantité</th>
+			<td mat-cell *matCellDef="let row">{{ row.qtstock }}</td>
+		</ng-container>
+
+		<ng-container matColumnDef="description">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+			<td mat-cell *matCellDef="let row">{{ row.description }}</td>
+		</ng-container>
+
+		<ng-container matColumnDef="marque">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Marque</th>
+			<td mat-cell *matCellDef="let row">{{ row.marque.marqNom }}</td>
+		</ng-container>
+
+		<ng-container matColumnDef="category">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Categorie</th>
+			<td mat-cell *matCellDef="let row">{{ row.category.catNom }}</td>
+		</ng-container>
+    <ng-container matColumnDef="photo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Photo</th>
+      <td mat-cell *matCellDef="let row"><img src="{{'http://localhost:8080/'+'photoProduct/'+row.id}}" width="50" height="50" /></td>
+    </ng-container>
+
+
+
+		<ng-container matColumnDef="actions">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+			<td mat-cell *matCellDef="let row">
+				<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+					<mat-icon>more_vert</mat-icon>
+				  </button>
+				  <mat-menu #menu="matMenu">
+					<button mat-menu-item (click)="onEditArticle(row.id)">
+					  <mat-icon>edit</mat-icon>
+					  <span>Modifier</span>
+					</button>
+
+					<button mat-menu-item (click)="onDeleteArticle(row.id)">
+            <mat-icon>remove_shopping_cart</mat-icon>
+					  <span>Supprimer</span>
+					</button>
+				  </mat-menu>
+			</td>
+		</ng-container>
+
+
+		<tr mat-header-row *matHeaderRowDef="columns"></tr>
+		<tr mat-row *matRowDef="let row; columns: columns;"></tr>
+
+	</table>
+	<mat-paginator [length]="product.length" [pageSize]="5" [pageSizeOptions]="[1, 5, 10,100]"></mat-paginator>
+
+
+</div>
+	</div>
+</div>

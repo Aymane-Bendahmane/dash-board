@@ -1,0 +1,75 @@
+<div id="container">
+  <h1>&bull; Ajouter une  Commande &bull;</h1>
+  <mat-icon>add_shopping_cart</mat-icon>
+  <div class="underline">
+  </div>
+
+  <div class="icon_wrapper">
+
+
+
+  </div>
+  <div id="error"></div>
+  <form #f="ngForm"   (ngSubmit)="saveCmd(f.value)"    method="post" id="contact_form">
+
+    <div class="email">
+      <label for="total" required></label>
+      <input type="number" placeholder="Total "  disabled name="total"    ngModel required minlength="5" maxlength="9" size="14"/>
+    </div>
+
+    <div class="name">
+      <label for="description" required ></label>
+      <input type="text" placeholder="Description " name="cmdDescription"    ngModel required minlength="5" maxlength="9" size="14"/>
+    </div>
+    <div class="name">
+      <label for="date" required></label>
+      <input type="date" placeholder="Date" name="date" required ngModel minlength="5" maxlength="9" size="14"/>
+    </div>
+
+
+    <div class="subject">
+      <label for="userr" required ></label>
+      <select placeholder="Utilisateur"   style="cursor: pointer" name="userr" required ngModel >
+
+        <option  *ngFor="let user of ListUsers"   [ngValue]="user" >
+          {{user.userLogin}}</option>
+
+      </select>
+    </div>
+
+
+
+
+    <div class="submit">
+      <input type="submit" value="Ajouter" id="form_button" />
+    </div>
+  </form><!-- // End form -->
+</div><!-- // End #container -->
+<script>
+  const email=document.getElementById('email')
+  const userLogin=document.getElementById('userLogin')
+  const userPassword=document.getElementById('userPassword')
+  const nom=document.getElementById('nom')
+  const prenom=document.getElementById('prenom')
+  const phone=document.getElementById('phone')
+  const userAddress=document.getElementById('userAddress')
+  const form=document.getElementById('contact_form')
+  const errorElement =document.getElementById('error')
+
+  form.addEventListener('submit',(e)=>{
+    let messages = []
+    if ( nom.value === '' || nom.value == null){
+
+      messages.push('Name is required')
+    }
+
+    if (messages.length > 0 ) {
+      e.preventDefault()
+      errorElement.innerText = messages.join(',')
+    }
+  })
+
+
+
+
+</script>

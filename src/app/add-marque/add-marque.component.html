@@ -1,0 +1,17 @@
+<div>
+  <button  mat-stroked-button routerLink="/marque">
+    <mat-icon>backspace</mat-icon></button>
+</div>
+
+<div class="login-box">
+  <h2>Ajouter une Marque</h2>
+  <form #f="ngForm"   (ngSubmit)="saveMarque(f.value)">
+    <div class="user-box">
+      <input type="text" name="marqNom" required ngModel />
+      <label>Nom de la marque</label>
+    </div>
+
+    <button class="name noselect" type="submit">Ajouter</button>
+
+  </form>
+</div>

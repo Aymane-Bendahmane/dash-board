@@ -1,0 +1,101 @@
+<div id="container">
+  <h1>&bull; Ajouter un  Article &bull;</h1>
+  <mat-icon >shopping_cart</mat-icon>
+  <div class="underline">
+  </div>
+
+  <div class="icon_wrapper">
+
+
+
+  </div>
+  <div id="error"></div>
+  <form #f="ngForm"   (ngSubmit)="saveProd(f.value)"    method="post" id="contact_form">
+    <div class="email">
+      <label for="email" required></label>
+      <input type="text" placeholder="Designation" name="artdesignation" required ngModel minlength="5" maxlength="9" size="14"/>
+    </div>
+    <div class="name">
+      <label for="prix" required></label>
+      <input type="number" placeholder="Prix " name="prix"    ngModel required minlength="5" maxlength="9" size="14"/>
+    </div>
+    <div class="password">
+      <label for="password" required ></label>
+      <input type="number" placeholder="Quantité " name="qtstock"    ngModel required minlength="5" maxlength="9" size="14"/>
+    </div>
+
+    <div class="email">
+      <label for="description" required></label>
+      <input type="text" placeholder="Description" name="description"  ngModel  required  />
+    </div>
+
+    <div class="subject">
+      <label for="marque" required ></label>
+      <select placeholder="Marque"   style="cursor: pointer" name="marque" required ngModel >
+
+        <option  *ngFor="let mark of ListMark"   [ngValue]="mark" >
+          {{mark.marqNom}}</option>
+
+      </select>
+    </div>
+    <div class="subject_2" >
+      <label for="category" required ></label>
+
+        <select required id="ngModel" style="cursor: pointer" name="category"  ngModel  >
+
+          <option  *ngFor="let categ of ListCat"   [ngValue]="categ" >{{categ.catNom}}</option>
+
+        </select>
+    </div>
+
+    <div class="submit">
+      <input type="submit" value="Ajouter" id="form_button" />
+    </div>
+  </form><!-- // End form -->
+  <form>
+    <div class="name">
+      <div class="col-md-5"  >
+        <img height="150"   class="img-thumbnail img-rounded btn img-150"
+             [src]="this.Service.host+'/photoBook/'+article.id+'?ts='+getTS()"/>
+        <button style="float:right" title="Upload une nouvelle photo" class="form_button"
+                (click)="onEditPhoto(article)">
+          <span class="form_button">  Ajouter une photo</span>
+        </button>
+        <p *ngIf="editPhoto">
+          <input type="file" name="photoName" class="form-group"  (change)="onSelectedFile($event)">
+          <button class="form_button" (click)="uploadPhoto()">Télécharger</button>
+          {{progress}}
+        </p>
+
+      </div>
+    </div>
+  </form>
+</div><!-- // End #container -->
+<script>
+  const email=document.getElementById('email')
+  const userLogin=document.getElementById('userLogin')
+  const userPassword=document.getElementById('userPassword')
+  const nom=document.getElementById('nom')
+  const prenom=document.getElementById('prenom')
+  const phone=document.getElementById('phone')
+  const userAddress=document.getElementById('userAddress')
+  const form=document.getElementById('contact_form')
+  const errorElement =document.getElementById('error')
+
+  form.addEventListener('submit',(e)=>{
+    let messages = []
+    if ( nom.value === '' || nom.value == null){
+
+      messages.push('Name is required')
+    }
+
+    if (messages.length > 0 ) {
+      e.preventDefault()
+      errorElement.innerText = messages.join(',')
+    }
+  })
+
+
+
+
+</script>

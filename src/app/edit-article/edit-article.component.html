@@ -1,0 +1,74 @@
+<div id="container">
+  <h1>&bull; Ajouter un  Article &bull;</h1>
+  <mat-icon >shopping_cart</mat-icon>
+  <div class="underline">
+  </div>
+
+  <div class="icon_wrapper">
+
+
+
+  </div>
+  <div id="error"></div>
+  <form #f="ngForm"   (ngSubmit)="updateArticle()"    method="post" id="contact_form">
+    <div class="email">
+      <label for="email" required></label>
+      <input type="text" placeholder="Designation" name="artdesignation" [(ngModel)]="arti.artdesignation"   required ngModel minlength="5" maxlength="9" size="14"/>
+    </div>
+    <div class="name">
+      <label for="prix" required></label>
+      <input type="number" placeholder="Prix " name="prix"    ngModel [(ngModel)]="arti.prix" required minlength="5" maxlength="9" size="14"/>
+    </div>
+    <div class="password">
+      <label for="password" required ></label>
+      <input type="number" placeholder="Quantité " name="qtstock"  [(ngModel)]="arti.qtstock"  ngModel required minlength="5" maxlength="9" size="14"/>
+    </div>
+
+    <div class="email">
+      <label for="description" required></label>
+      <input type="text" placeholder="Description" name="description" [(ngModel)]="arti.description"  ngModel  required  />
+    </div>
+
+    <div class="subject">
+      <label for="marque" required ></label>
+      <select placeholder="Marque"   style="cursor: pointer"  name="marque" required [(ngModel)]="arti.marque" ngModel >
+
+        <option  *ngFor="let mark of ListMark"   [ngValue]="mark" >
+          {{mark.marqNom}}</option>
+
+      </select>
+    </div>
+    <div class="subject_2" >
+      <label for="category" required ></label>
+
+      <select required id="ngModel" style="cursor: pointer" name="category"  ngModel [(ngModel)]="arti.category"  >
+
+        <option  *ngFor="let categ of ListCat"   [ngValue]="categ" >{{categ.catNom}}</option>
+
+      </select>
+    </div>
+
+    <div class="submit">
+      <input type="submit" value="Modifier" id="form_button" />
+    </div>
+  </form><!-- // End form -->
+  <form >
+    <div style="position:absolute;bottom:-15px;" class="name">
+      <div class="col-md-5"  >
+        <img height="150"   class="img-thumbnail img-rounded btn img-150"
+             src="{{'http://localhost:8080'+'/photoProduct/'+CurrentArticle.id}}"/>
+        <button style="float:right;" title="Upload une nouvelle photo" class="form_button"
+                (click)="onEditPhoto(article)">
+          <span class="form_button">  Modifier la photo</span>
+        </button>
+        <p *ngIf="editPhoto">
+          <input type="file" name="photoName" class="form-group"  (change)="onSelectedFile($event)">
+          <button class="form_button" (click)="uploadPhoto()">Télécharger</button>
+          {{progress}}
+        </p>
+
+      </div>
+    </div>
+  </form>
+</div><!-- // End #container -->
+

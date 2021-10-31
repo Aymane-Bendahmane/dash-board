@@ -1,0 +1,56 @@
+<h1 class="h1">Gestion des Categories</h1>
+<div>
+  <button  mat-stroked-button routerLink="/add-cat">
+    <mat-icon>library_add</mat-icon></button>
+</div>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput placeholder="Chercher une categorie"(keyup)="applyFilter($event)">
+</mat-form-field>
+
+
+<div>
+  <table mat-table [dataSource]="dataSource" matSort>
+
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+
+      <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="catNom">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom Categorie</th>
+      <td mat-cell *matCellDef="let row">{{ row.catNom }}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item  (click)="onEditCate(row.id)">
+            <mat-icon>edit</mat-icon>
+
+            <span>Modifier</span>
+          </button>
+
+          <button mat-menu-item  (click)="onDeleteCat(row.id)">
+            <mat-icon>delete</mat-icon>
+            <span>Supprimer</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+
+  </table>
+  <mat-paginator [length]="categs.length" [pageSize]="3" [pageSizeOptions]="[1, 5, 10,100]"></mat-paginator>
+
+</div>
