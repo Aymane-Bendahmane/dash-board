@@ -13,8 +13,7 @@ export class DefaultComponent implements OnInit {
 
   ngOnInit() {
 
-  localStorage.setItem('access-token',JSON.stringify(this.cookieService.get("Access-Token")))
-   localStorage.setItem('refresh-token',JSON.stringify(this.cookieService.get("Refresh-Token")))
+
 
   }
 

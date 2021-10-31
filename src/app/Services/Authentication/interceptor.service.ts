@@ -4,7 +4,6 @@ import {Observable, throwError} from "rxjs";
 import {AuthServiceService} from "./auth-service.service";
 import {catchError, switchMap} from "rxjs/operators";
 import {Router, RouterLink} from "@angular/router";
-import {CookieService} from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -12,8 +11,7 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class InterceptorService implements HttpInterceptor {
 
-  constructor(public auth: AuthServiceService,private  rt:Router,public cookieService: CookieService) {
-
+  constructor(public auth: AuthServiceService,private  rt:Router) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -35,8 +33,8 @@ export class InterceptorService implements HttpInterceptor {
       if (error instanceof HttpErrorResponse && error.status === 401 || error.status === 403 ) {
         console.log('refreshing after error')
         return this.handle401Error(req, next);
-      } else if(!req.url.includes('Rec')) {
-        this.auth.Logout()
+      } else{
+        //this.auth.Logout()
         return throwError(error);
       }
     }));
@@ -58,9 +56,9 @@ export class InterceptorService implements HttpInterceptor {
           return throwError(err);
         })
       );
-      }else {
-     /*this.rt.navigateByUrl('/login')
-        alert('You need to Authenticate To this action')*/
+    }else {
+      this.rt.navigateByUrl('/login')
+      alert('You need to Authenticate To this action')
     }
     console.log('end')
   }
