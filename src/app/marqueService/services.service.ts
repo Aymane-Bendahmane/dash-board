@@ -1,14 +1,13 @@
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, throwError} from 'rxjs';
+import {Observable} from 'rxjs';
 import { Marque } from '../Mod/Marque';
 import {AuthServiceService} from '../Services/Authentication/auth-service.service';
 import {User} from '../Mod/User';
 import {Article} from '../Mod/Article';
 import {Commande} from '../Mod/Commande';
 import {Category} from '../Mod/Category';
-import {catchError} from 'rxjs/operators';
-import {error} from 'highcharts';
+
 
 @Injectable({
   providedIn: 'root'

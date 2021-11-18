@@ -7,19 +7,15 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AreaComponent } from './widgets/area/area.component';
-import { HighchartsChartModule } from 'highcharts-angular';
-import { CardComponent } from './widgets/card/card.component';
-import { PieComponent } from './widgets/pie/pie.component';
+import { ChartOneComponent } from './chart-one/chart-one.component';
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    AreaComponent,
-    CardComponent,
-    PieComponent
+    ChartOneComponent,
   ],
   imports: [
     CommonModule,
@@ -30,16 +26,13 @@ import { PieComponent } from './widgets/pie/pie.component';
     FlexLayoutModule,
     MatMenuModule,
     MatListModule,
-    RouterModule,
-    HighchartsChartModule
+    RouterModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    AreaComponent,
-    CardComponent,
-    PieComponent
+    ChartOneComponent,
   ]
 })
 export class SharedModule { }
