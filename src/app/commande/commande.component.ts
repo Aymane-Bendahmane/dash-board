@@ -45,7 +45,7 @@ export class CommandeComponent implements OnInit {
 
     this.Service.getCommands()
     .subscribe(data=>{
-      this.commands=data;
+      this.commands=data['_embedded']['commandes'];
       console.log(this.commands)
 
       this.dataSource = new MatTableDataSource(this.commands);

@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChartOneComponent } from './chart-one/chart-one.component';
+import { ChartTwoComponent } from './chart-two/chart-two.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ChartOneComponent } from './chart-one/chart-one.component';
     FooterComponent,
     SidebarComponent,
     ChartOneComponent,
+    ChartTwoComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { ChartOneComponent } from './chart-one/chart-one.component';
     FooterComponent,
     SidebarComponent,
     ChartOneComponent,
+    ChartTwoComponent,
   ]
 })
 export class SharedModule { }

@@ -123,7 +123,7 @@ export class MarqueService {
   }
   //-------------------------------------------------commande services
   public getCommands(){
-    return this.httpClient.get(this.host+"/commandess");
+    return this.httpClient.get(this.host+"/commandes?projection=p4");
   }
   public deleteCommande(id:number){
     return this.httpClient.delete(this.host+"/Dcommande/"+id);
